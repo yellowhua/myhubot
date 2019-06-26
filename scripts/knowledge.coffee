@@ -9,8 +9,13 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
-
-   robot.hear /my test/i, (res) ->
-     res.send "wow, this is my test"
-  
-   
+	
+   robot.catchAll (res) ->
+     pos = res.message.text.indexOf "@catch"
+     if pos == 0
+       robot.http("http://localhost:8081/knowledge-base/knowledge/hubot?content=#{res.message.text}")
+         .get() (err, resp, body) ->
+           if err
+             res.send "亲，知识库无法连接，请联系管理员"
+             return
+           res.send "#{body}"

@@ -1,0 +1,2 @@
+#!/bin/bash
+/home/hh/redis-4.0.2/utils/redis_init_script start

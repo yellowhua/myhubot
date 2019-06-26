@@ -1,0 +1,2 @@
+#!/bin/bash
+nohup sh /home/hh/jboss-4.2.3.GA/bin/run.sh &

@@ -1,0 +1,11 @@
+#!/bin/sh
+ 
+NAME=jboss-4.2.3.GA
+echo "process name is: $NAME"
+ID=`ps -ef | grep "$NAME" | grep -v "grep" | awk '{print $2}'`
+for id in $ID
+do
+kill -9 $id
+echo "process id $id is killed;"
+done
+echo "stop $NAME successful"
